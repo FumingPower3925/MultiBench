@@ -1,0 +1,34 @@
+{
+    "fileioTest": {
+        "numThreads": 1,
+        "totalTime": 300.0149,
+        "numOperations": {
+            "read": 14788,
+            "write": 9858,
+            "other": 31488,
+            "total": 56134
+        },
+        "bytes": {
+            "read": 231.06,
+            "write": 154.03,
+            "total": 385.09
+        }
+    },
+    "cpuTest": {
+        "numThreads": 2,
+        "totalTime": 18.0683,
+        "timeByEventExecution": 36.1322
+    },
+    "threadsTest": {
+        "numThreads": 1,
+        "totalTime": 20,
+        "pre-requestAvg": 10.54
+    },
+    "memoryTest": {
+        "numThreads": 4,
+        "totalTime": 45.1961,
+        "memoryBlockSize": 1000,
+        "numOperations": 104857600,
+        "dataTransferred": 102400.00
+    }
+}
