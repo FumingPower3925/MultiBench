@@ -1,3 +1,4 @@
-distribution,totalTime,pre-request stats average (ms)
-archlinux,20.0052,10.54
-ubuntu,20.0064,4.97
+distribution,number of threads,totalTime,pre-request stats average (ms)
+archlinux,4 threads,20.0052,10.54
+ubuntu,4 threads,20.0064,4.97
+archlinux,2 threads,20.0008,7.54

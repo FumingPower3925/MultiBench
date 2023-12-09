@@ -102,17 +102,17 @@ def showFileioTestWindow():
 
 def showMemoryTestWindow():
     memoryTestData = pd.read_csv('results/results_memoryTest.csv')
-    sns.barplot(x=memoryTestData["distribution"], y=memoryTestData["execution time (s)"], palette=barplotPalette)
+    sns.barplot(x=memoryTestData["distribution"], y=memoryTestData["execution time (s)"], hue=memoryTestData["number of threads"], palette=barplotPalette)
     plt.title(testStr[2])
     plt.show()
 
-    sns.barplot(x=memoryTestData["distribution"], y=memoryTestData["number of operations"], palette=barplotPalette)
+    sns.barplot(x=memoryTestData["distribution"], y=memoryTestData["number of operations"], hue=memoryTestData["number of threads"], palette=barplotPalette)
     plt.title(testStr[2])
     plt.show()
 
 def showThreadsTestWindow():
     threadsTestData = pd.read_csv('results/results_threadsTest.csv')
-    sns.barplot(x=threadsTestData["distribution"], y=threadsTestData["pre-request stats average (ms)"], palette=barplotPalette)
+    sns.barplot(x=threadsTestData["distribution"], y=threadsTestData["pre-request stats average (ms)"], hue=threadsTestData["number of threads"], palette=barplotPalette)
     plt.title(testStr[3])
     plt.show()
 
