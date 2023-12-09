@@ -25,6 +25,10 @@ posRectangleY1 = 0
 posRectangleY2 = 590
 widthRectangle = 930
 heightRectangle = 570
+posLabelX1 = 460
+posLabelX2 = 1420
+posLabelY1 = 20
+posLabelY2 = 610
 
 def createButton(window, txt, func):
     return ttk.Button(
@@ -45,14 +49,3 @@ def getFileNames(window):
 
 def quit_program(window):
     window.destroy()
-
-def createRectangles(window):
-    # rectangles for fileoTest, cpuTest, threadsTest and memoryTest respectively
-    w = Canvas(window, width=1900, height=1100)
-    w.create_rectangle(posRectangleX1, posRectangleY1, posRectangleX1+widthRectangle, posRectangleY1+heightRectangle, fill=rectangleBgColor, outline = rectangleLineColor)
-    w.create_rectangle(posRectangleX2, posRectangleY1, posRectangleX2+widthRectangle, posRectangleY1+heightRectangle, fill=rectangleBgColor, outline = rectangleLineColor)
-    w.create_rectangle(posRectangleX1, posRectangleY2, posRectangleX1+widthRectangle, posRectangleY2+heightRectangle, fill=rectangleBgColor, outline = rectangleLineColor)
-    w.create_rectangle(posRectangleX2, posRectangleY2, posRectangleX2+widthRectangle, posRectangleY2+heightRectangle, fill=rectangleBgColor, outline = rectangleLineColor)
-    
-    w.create_text((20, 20), text="FileIO test")
-    w.place(x=20, y=20)

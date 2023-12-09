@@ -1,0 +1,15 @@
+FileIOTest:
+    distribution,readOp,writeOp,otherOp,totalOp
+    string,number,number,number,number
+
+CpuTest:
+    distribution,totalTime,timeByEventExecution
+    string,float(seconds),float(seconds)
+
+ThreadsTest:
+    distribution,totalTime,prerequestAvg
+    string,float(seconds),float(miliseconds)
+
+MemoryTest:
+    distribution,numThreads,numOperations
+    string,number,number

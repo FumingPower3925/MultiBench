@@ -1,7 +1,10 @@
+# graphic design
 import tkinter as tk
 from tkinter import ttk, Canvas
 from ttkthemes import ThemedTk
+# show stats
 import seaborn as sns
+import matplotlib.pyplot as plt
 import json
 import common
 
@@ -56,8 +59,6 @@ def showBenchmarkWindow(menuWindow):
 
     #create basic buttons
     createBasicButtons(benchmarkWindow)
-    # create rectangles
-    common.createRectangles(benchmarkWindow)
 
 # show the stats of the benchmarks you have done
 def showStatsWindow(menuWindow):
@@ -69,8 +70,7 @@ def showStatsWindow(menuWindow):
 
     #create basic buttons
     createBasicButtons(statsWindow)
-    # rectangles for fileoTest, cpuTest, threadsTest and memoryTest respectively
-    common.createRectangles(statsWindow)
+    createShowTestButtons(statsWindow)
 
     # get the names of all the files with stats and read them. we remove the last position because i'ts a \n
     files = common.getFileNames(statsWindow)
@@ -80,14 +80,23 @@ def showStatsWindow(menuWindow):
         file = open(filename)
         data = json.load(file)
         
-
-        file.close()  
+        fileIOTestData = 
+        
+        file.close()
+    
+    # show the 4 plots
+    #sns.set_style('darkgrid')
+    #sns.barplot(x=files,y=, color="#9572e0")
+    #plt.show()
 
 def createBasicButtons(window):
     # button to return to the menu
     common.createButton(window, menuStr, lambda: showMenuWindow(window)).place(x=menuButtonX,y=menuButtonY)
     # button to exit the app
     common.createButton(window, exitStr, lambda: common.quit_program(window)).place(x=exitButtonX,y=exitButtonY)
+
+def createShowTestButtons(window):
+    common.createButton(window, fileioTestStr, )
 
 # main
 showMenuWindow(None)
