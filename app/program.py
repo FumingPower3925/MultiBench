@@ -21,11 +21,11 @@ theme = common.this_theme
 yourBenchmarksStr = common.yourBenchmarksString
 posMenuButton = common.posMenuButton
 posExitButton = common.posExitButton
-rectangleBgCol = common.rectangleBgColor
-rectangleLineCol = common.rectangleLineColor
 testStr = common.testString
 posTestsButton = common.posTestsButton
 barplotPalette = common.barplotPalette
+filepath = common.filepath
+filenames = common.filenames
 
 # create the widgets in the menu
 def showMenuWindow(window):
@@ -35,11 +35,6 @@ def showMenuWindow(window):
     menuWindow = ThemedTk(theme=theme)
     menuWindow.title(menuStr)
     menuWindow.geometry(menuRes)
-
-    # create a square to make it look good
-    w = Canvas(menuWindow, width=775, height=375)
-    w.create_rectangle(12.5, 12.5, 787.5, 387.5, fill=rectangleBgCol, outline = rectangleLineCol)
-    w.place(x=12.5, y=12.5)
 
     # do a benchmark button
     common.createButton(menuWindow, doBenchmarkStr, lambda: showBenchmarkWindow(menuWindow)).place(x=150,y=100)
@@ -54,7 +49,7 @@ def showMenuWindow(window):
 def showBenchmarkWindow(menuWindow):
     menuWindow.destroy()
     #window to do the benchmarks
-    benchmarkWindow = tk.Tk()
+    benchmarkWindow = ThemedTk(theme=theme)
     benchmarkWindow.title(customizeBenchmarkStr)
     benchmarkWindow.geometry(defaultRes)
 
@@ -65,7 +60,7 @@ def showBenchmarkWindow(menuWindow):
 def showStatsWindow(menuWindow):
     # initialize basic widgets of the window
     menuWindow.destroy()
-    statsWindow = tk.Tk()
+    statsWindow = ThemedTk(theme=theme)
     statsWindow.title(yourBenchmarksStr)
     statsWindow.geometry(defaultRes)
 
@@ -89,19 +84,19 @@ def createShowTestButtons(window):
     common.createButton(window, testStr[3], showThreadsTestWindow).place(x=posTestsButton[6],y=posTestsButton[7])
 
 def showCpuTestWindow():
-    cpuTestData = pd.read_csv('results/results_cpuTest.csv')
+    cpuTestData = pd.read_csv(filepath+filenames[0])
     sns.barplot(x=cpuTestData["distribution"], y=cpuTestData["time by event execution"], data=cpuTestData, palette=barplotPalette)
     plt.title(testStr[0])
     plt.show()
 
 def showFileioTestWindow():
-    fileioTestData = pd.read_csv('results/results_fileioTest.csv')
+    fileioTestData = pd.read_csv(filepath+filenames[1])
     sns.barplot(x=fileioTestData["distribution"], y=fileioTestData["number of operations"], hue=fileioTestData["type of operations"], data=fileioTestData, palette=barplotPalette)
     plt.title(testStr[1])
     plt.show()
 
 def showMemoryTestWindow():
-    memoryTestData = pd.read_csv('results/results_memoryTest.csv')
+    memoryTestData = pd.read_csv(filepath+filenames[2])
     sns.barplot(x=memoryTestData["distribution"], y=memoryTestData["execution time (s)"], hue=memoryTestData["number of threads"], palette=barplotPalette)
     plt.title(testStr[2])
     plt.show()
@@ -111,7 +106,7 @@ def showMemoryTestWindow():
     plt.show()
 
 def showThreadsTestWindow():
-    threadsTestData = pd.read_csv('results/results_threadsTest.csv')
+    threadsTestData = pd.read_csv(filepath+filenames[3])
     sns.barplot(x=threadsTestData["distribution"], y=threadsTestData["pre-request stats average (ms)"], hue=threadsTestData["number of threads"], palette=barplotPalette)
     plt.title(testStr[3])
     plt.show()
