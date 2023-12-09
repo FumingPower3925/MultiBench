@@ -11,5 +11,5 @@ ThreadsTest:
     string,float(seconds),float(miliseconds)
 
 MemoryTest:
-    distribution,numThreads,numOperations
-    string,number,number
+    distribution,numThreads,numOperations, execution time
+    string,number,number,seconds

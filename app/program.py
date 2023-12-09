@@ -5,6 +5,7 @@ from ttkthemes import ThemedTk
 # show stats
 import seaborn as sns
 import matplotlib.pyplot as plt
+import pandas as pd
 import json
 import common
 
@@ -18,13 +19,13 @@ customizeBenchmarkStr = common.customizeBenchmarkString
 exitStr = common.exitString
 theme = common.this_theme
 yourBenchmarksStr = common.yourBenchmarksString
-defaultRes = common.defaultResolution
-menuButtonX = common.menuButtonx
-menuButtonY = common.menuButtony
-exitButtonX = common.exitButtonx
-exitButtonY = common.exitButtony
+posMenuButton = common.posMenuButton
+posExitButton = common.posExitButton
 rectangleBgCol = common.rectangleBgColor
 rectangleLineCol = common.rectangleLineColor
+testStr = common.testString
+posTestsButton = common.posTestsButton
+barplotPalette = common.barplotPalette
 
 # create the widgets in the menu
 def showMenuWindow(window):
@@ -72,31 +73,48 @@ def showStatsWindow(menuWindow):
     createBasicButtons(statsWindow)
     createShowTestButtons(statsWindow)
 
-    # get the names of all the files with stats and read them. we remove the last position because i'ts a \n
-    files = common.getFileNames(statsWindow)
-
-    for filename in files:
-        # default is read-only, no need to specify opening mode
-        file = open(filename)
-        data = json.load(file)
-        
-        fileIOTestData = 
-        
-        file.close()
-    
-    # show the 4 plots
-    #sns.set_style('darkgrid')
-    #sns.barplot(x=files,y=, color="#9572e0")
-    #plt.show()
+    # configure the 4 plots to have the same style
+    sns.set_style('darkgrid')
 
 def createBasicButtons(window):
     # button to return to the menu
-    common.createButton(window, menuStr, lambda: showMenuWindow(window)).place(x=menuButtonX,y=menuButtonY)
+    common.createButton(window, menuStr, lambda: showMenuWindow(window)).place(x=posMenuButton[0],y=posMenuButton[1])
     # button to exit the app
-    common.createButton(window, exitStr, lambda: common.quit_program(window)).place(x=exitButtonX,y=exitButtonY)
+    common.createButton(window, exitStr, lambda: common.quit_program(window)).place(x=posExitButton[0],y=posExitButton[1])
 
 def createShowTestButtons(window):
-    common.createButton(window, fileioTestStr, )
+    common.createButton(window, testStr[0], showCpuTestWindow).place(x=posTestsButton[0],y=posTestsButton[1])
+    common.createButton(window, testStr[1], showFileioTestWindow).place(x=posTestsButton[2],y=posTestsButton[3])
+    common.createButton(window, testStr[2], showMemoryTestWindow).place(x=posTestsButton[4],y=posTestsButton[5])
+    common.createButton(window, testStr[3], showThreadsTestWindow).place(x=posTestsButton[6],y=posTestsButton[7])
+
+def showCpuTestWindow():
+    cpuTestData = pd.read_csv('results/results_cpuTest.csv')
+    sns.barplot(x=cpuTestData["distribution"], y=cpuTestData["time by event execution"], data=cpuTestData, palette=barplotPalette)
+    plt.title(testStr[0])
+    plt.show()
+
+def showFileioTestWindow():
+    fileioTestData = pd.read_csv('results/results_fileioTest.csv')
+    sns.barplot(x=fileioTestData["distribution"], y=fileioTestData["number of operations"], hue=fileioTestData["type of operations"], data=fileioTestData, palette=barplotPalette)
+    plt.title(testStr[1])
+    plt.show()
+
+def showMemoryTestWindow():
+    memoryTestData = pd.read_csv('results/results_memoryTest.csv')
+    sns.barplot(x=memoryTestData["distribution"], y=memoryTestData["execution time (s)"], palette=barplotPalette)
+    plt.title(testStr[2])
+    plt.show()
+
+    sns.barplot(x=memoryTestData["distribution"], y=memoryTestData["number of operations"], palette=barplotPalette)
+    plt.title(testStr[2])
+    plt.show()
+
+def showThreadsTestWindow():
+    threadsTestData = pd.read_csv('results/results_threadsTest.csv')
+    sns.barplot(x=threadsTestData["distribution"], y=threadsTestData["pre-request stats average (ms)"], palette=barplotPalette)
+    plt.title(testStr[3])
+    plt.show()
 
 # main
 showMenuWindow(None)

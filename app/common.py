@@ -13,22 +13,14 @@ customizeBenchmarkString = 'Customize your benchmark'
 yourBenchmarksString = 'Your benchmarks'
 exitString = 'Exit'
 this_theme = 'arc'
-menuButtonx = 1650
-menuButtony = 1150
-exitButtonx = 1800
-exitButtony = 1150
+posMenuButton = [1650,1150]
+posExitButton = [1800,1150]
 rectangleBgColor = '#7183d3'
 rectangleLineColor = '#000000'
-posRectangleX1 = 0
-posRectangleX2 = 950
-posRectangleY1 = 0
-posRectangleY2 = 590
-widthRectangle = 930
-heightRectangle = 570
-posLabelX1 = 460
-posLabelX2 = 1420
-posLabelY1 = 20
-posLabelY2 = 610
+filenames = ['results_cpuTest.csv','results_fileioTest.csv','results_memoryTest.csv','results_threadsTest.csv']
+testString = ['CPU Test','FileIO Test','Memory Test','Threads Test']
+posTestsButton = [640,400,1260,400,640,800,1260,800]
+barplotPalette = 'bright'
 
 def createButton(window, txt, func):
     return ttk.Button(
@@ -36,16 +28,6 @@ def createButton(window, txt, func):
         text = txt,
         command = func
     )
-
-# using pipes might be a bit outdated, but I think it's useful because it returns the error message
-def getFileNames(window):
-    p = Popen("ls ./results/*.json", shell=True, stdout=PIPE)
-    out, err = p.communicate()
-    if p.returncode != 0:
-        print(err)
-        quit_program(window)
-    ret = out.decode("utf-8").split("\n")
-    return n.delete(ret, len(ret)-1)
 
 def quit_program(window):
     window.destroy()

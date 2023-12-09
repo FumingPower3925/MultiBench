@@ -1,3 +1,9 @@
-distribution,readOp,writeOp,otherOp,totalOp
-archlinux,14788,9858,31488,56134
-ubuntu,12342,2345,43555,23435
+distribution,type of operations,number of operations
+archlinux,read operations,14788
+archlinux,write operations,9858
+archlinux,other operations,31488
+archlinux,total operations,56134
+ubuntu,read operations,12342
+ubuntu,write operations,2345
+ubuntu,other operations,43555
+ubuntu,total operations,58242
