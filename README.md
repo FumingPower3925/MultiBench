@@ -1,17 +1,30 @@
 # MultiBench
 Benchmark aggregator with gui and clean graphs
 ---
-# python version
+# TODO
+
+- [ ] Auto dependency instalation on startup
+- [ ] Add usage intructions to README
+- [ ] Add buttons to return to the menu
+- [ ] Add multithreded execution or another solution to show simultaniously the two memory graphs
+- [ ] Add auto instalation of sysbench
+- [ ] Execute sysbench from python and put the results in the required csv
+- [ ] Create a first release on github
+
+---
+# Requisites
+
+## python version
 3.11.6-1
 
-# ttk themes (arch)
+## ttk themes (arch)
 aur/python-ttkthemes 3.2.2-1
 
-# tkinter (arch)
+## tkinter (arch)
 aur/ttk-themes 3.2.2-1
 
-# seaborn (arch)
+## seaborn (arch)
 extra/python-seaborn 0.12.2-3
 
-# json5 (arch)
+## json5 (arch)
 extra/python-json5 0.9.14-1
