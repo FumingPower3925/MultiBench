@@ -1,4 +1,5 @@
 # graphic design
+from time import sleep
 import tkinter as tk
 from tkinter import ttk, Canvas
 from ttkthemes import ThemedTk
@@ -8,6 +9,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import json
 import common
+import subprocess
 
 # initialize common constant variables
 menuRes = common.menuResolution
@@ -22,6 +24,9 @@ yourBenchmarksStr = common.yourBenchmarksString
 posMenuButton = common.posMenuButton
 posExitButton = common.posExitButton
 testStr = common.testString
+benchStr = common.benchString
+runStr = common.runString
+runningStr = common.runningString
 posTestsButton = common.posTestsButton
 barplotPalette = common.barplotPalette
 filepath = common.filepath
@@ -50,11 +55,93 @@ def showBenchmarkWindow(menuWindow):
     menuWindow.destroy()
     #window to do the benchmarks
     benchmarkWindow = ThemedTk(theme=theme)
-    benchmarkWindow.title(customizeBenchmarkStr)
+    benchmarkWindow.title(yourBenchmarksStr)
     benchmarkWindow.geometry(defaultRes)
 
     #create basic buttons
     createBasicButtons(benchmarkWindow)
+    common.createButton(benchmarkWindow, benchStr[0], showSysbenchOptions).place(x=posTestsButton[0],y=posTestsButton[1])
+
+def showSysbenchOptions():
+    sysbenchOptionsWindow = ThemedTk(theme=theme)
+    sysbenchOptionsWindow.title(customizeBenchmarkStr)
+    sysbenchOptionsWindow.geometry(menuRes)
+    result = [tk.BooleanVar(), tk.BooleanVar(), tk.BooleanVar(), tk.BooleanVar()]
+    tk.Checkbutton(sysbenchOptionsWindow, text=testStr[0], command=lambda: result[0].set(not result[0].get())).pack()
+    tk.Checkbutton(sysbenchOptionsWindow, text=testStr[1], command=lambda: result[1].set(not result[1].get())).pack()
+    tk.Checkbutton(sysbenchOptionsWindow, text=testStr[2], command=lambda: result[2].set(not result[2].get())).pack()
+    tk.Checkbutton(sysbenchOptionsWindow, text=testStr[3], command=lambda: result[3].set(not result[3].get())).pack()
+    common.createButton(sysbenchOptionsWindow, runStr, lambda: runSysbench(sysbenchOptionsWindow, result)).pack()
+
+def runSysbench(window, result):
+    # CPU Test
+    if result[0].get():
+        print(runningStr[0])
+        process = subprocess.Popen(['sysbench', 'cpu', '--cpu-max-prime=20000', '--threads=2', 'run'],
+        stdout=subprocess.PIPE, 
+        stderr=subprocess.PIPE)
+        stdout, stderr = process.communicate()
+        while (process.poll() is None):
+            sleep(0.1)
+        print(stdout)
+        print(stderr)
+
+    # FileIO Test
+    if result[1].get():
+        # File prepare
+        print(runningStr[1])
+        process = subprocess.Popen(['sysbench', 'fileio', '--file-total-size=32G', 'prepare'],
+        stdout=subprocess.PIPE, 
+        stderr=subprocess.PIPE)
+        stdout, stderr = process.communicate()
+        while (process.poll() is None):
+            sleep(0.1)
+
+        # File run
+        print(runningStr[2])
+        process = subprocess.Popen(['sysbench', 'fileio', '--file-total-size=32G', '--file-test-mode=rndrw', '--max-time=300', '--max-requests=0', 'run'],
+        stdout=subprocess.PIPE, 
+        stderr=subprocess.PIPE)
+        stdout, stderr = process.communicate()
+        while (process.poll() is None):
+            sleep(0.1)
+        print(stdout)
+        print(stderr)
+
+        # File cleanup
+        print(runningStr[3])
+        process = subprocess.Popen(['sysbench', 'fileio', '--file-total-size=32G', '--file-test-mode=rndrw', '--max-time=300', '--max-requests=0', 'cleanup'],
+        stdout=subprocess.PIPE, 
+        stderr=subprocess.PIPE)
+        stdout, stderr = process.communicate()
+        while (process.poll() is None):
+            sleep(0.1)
+
+    # Memory
+    if result[2].get():
+        print(runningStr[4])
+        process = subprocess.Popen(['sysbench', 'memory', '--threads=4', 'run'],
+        stdout=subprocess.PIPE, 
+        stderr=subprocess.PIPE)
+        stdout, stderr = process.communicate()
+        while (process.poll() is None):
+            sleep(0.1)
+        print(stdout)
+        print(stderr)
+
+    # Threads
+    if result[3].get():
+        print(runningStr[5])
+        process = subprocess.Popen(['sysbench', 'threads', '--thread-locks=1', '--time=20', 'run'],
+        stdout=subprocess.PIPE, 
+        stderr=subprocess.PIPE)
+        stdout, stderr = process.communicate()
+        while (process.poll() is None):
+            sleep(0.1)
+        print(stdout)
+        print(stderr)
+    
+    window.destroy()
 
 # show the stats of the benchmarks you have done
 def showStatsWindow(menuWindow):
