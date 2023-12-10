@@ -1,2 +1,2 @@
 distribution,number of threads,number of operations per second,MiB per second
-Ubuntu 22.04,4,20381753.31,19904.06
+Arch Linux ,4 threads,10957479.34,10700.66

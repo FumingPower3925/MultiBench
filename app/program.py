@@ -26,8 +26,6 @@ def showMenuWindow(window):
     menuWindow.title(menuString)
     menuWindow.geometry(menuResolution)
 
-
-
     # do a benchmark button
     common.createButton(menuWindow, doBenchmarkString, lambda: showBenchmarkWindow(menuWindow)).place(x=150,y=100)
     # show stats button
@@ -61,7 +59,6 @@ def showSysbenchOptions():
     common.createButton(sysbenchOptionsWindow, runString, lambda: runSysbench(sysbenchOptionsWindow, result)).pack()
     common.createButton(sysbenchOptionsWindow, returnString, lambda: sysbenchOptionsWindow.destroy()).pack()
     
-
 def writeToWindow(window, text):
     tk.Label(window, text=text).pack()
 
@@ -129,7 +126,6 @@ def runSysbench(optionsWindow, result):
         toWrite = distribution + ',write throughput,' + writeThroughput
         os.system("echo " + toWrite + " >> " + filepath+filenames[1])
 
-        
         # File cleanup
         tk.Label(sysbenchRunWindow, text=runningString[3]).pack()
         process = subprocess.Popen(['sysbench', 'fileio', '--file-total-size=32G', '--file-test-mode=rndrw', '--time=300', '--max-requests=0', 'cleanup'],
@@ -164,7 +160,7 @@ def runSysbench(optionsWindow, result):
         mbPerSecond = std[start+17:end].split()[0]
 
         # Writting the results to the CSV
-        toWrite = distribution + ',' + threads + ',' + numberOperations + ',' + mbPerSecond
+        toWrite = distribution + ',' + threads + ' threads,' + numberOperations + ',' + mbPerSecond
         os.system("echo " + toWrite + " >> " + filepath+filenames[2])
         
 
@@ -192,14 +188,12 @@ def runSysbench(optionsWindow, result):
         latency = std[start+18:end].split()[0]
 
         # Writting the results to the CSV
-        toWrite = distribution + ',' + threads + ',' + time + ',' + latency
+        toWrite = distribution + ',' + threads + ' threads,' + time + ',' + latency
         os.system("echo " + toWrite + " >> " + filepath+filenames[3])
         
-    
     tk.Label(sysbenchRunWindow, text=finishString).pack()
     sleep(1)
     sysbenchRunWindow.destroy()
-    
 
 # show the stats of the benchmarks you have done
 def showStatsWindow(menuWindow):
@@ -218,7 +212,7 @@ def showStatsWindow(menuWindow):
 
 def createBasicButtons(window):
     # button to return to the menu
-    common.createButton(window, menuString, lambda: showMenuWindow(window)).place(x=posExitButton[0],y=posExitButton[1])
+    common.createButton(window, menuString, lambda: showMenuWindow(window)).place(x=posMenuButton[0],y=posMenuButton[1])
     # button to exit the app
     common.createButton(window, exitString, lambda: common.quit_program(window)).place(x=posExitButton[0],y=posExitButton[1])
 

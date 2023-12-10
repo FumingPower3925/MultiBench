@@ -1,2 +1,2 @@
 distribution,number of threads,totalTime,latency average (ms)
-Ubuntu 22.04,1,20.0004,0.29
+Arch Linux ,1 threads,20.0003,0.19

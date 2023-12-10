@@ -23,10 +23,14 @@ Benchmark aggregator with gui and clean graphs
 
 `$ python3 program.py`
 > DISCLAMER: Right now as there are no auto dependency instalation yet it is possible that you will need to install the dependecies using pip manually
+If you have archlinux you can use yay or pacman.
 # Requisites
 
 ## python version
 3.11.6-1
+
+## sysbench
+extra/sysbench 1.0.20-1
 
 ## ttk themes
 aur/python-ttkthemes 3.2.2-1
