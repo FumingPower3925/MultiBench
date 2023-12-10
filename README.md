@@ -21,14 +21,17 @@ Benchmark aggregator with gui and clean graphs
 ## python version
 3.11.6-1
 
-## ttk themes (arch)
+## ttk themes
 aur/python-ttkthemes 3.2.2-1
 
-## tkinter (arch)
+## tkinter
 aur/ttk-themes 3.2.2-1
 
-## seaborn (arch)
+## seaborn
 extra/python-seaborn 0.12.2-3
 
-## json5 (arch)
+## json5
 extra/python-json5 0.9.14-1
+
+## distro
+distro 1.7.0
