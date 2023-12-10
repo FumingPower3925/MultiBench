@@ -4,7 +4,7 @@ Benchmark aggregator with gui and clean graphs
 # Roadmap
 
 - [ ] Auto dependency instalation on startup
-- [ ] Add usage intructions to README
+- [X] Add usage intructions to README
 - [X] Add buttons to return to the menu
 - [ ] Add multithreded execution or another solution to show simultaniously the two memory graphs
 - [ ] Add auto instalation of sysbench (ubuntu/debian and arch)

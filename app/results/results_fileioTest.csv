@@ -1,9 +1,3 @@
-distribution,type of operations,number of operations
-archlinux,read operations,14788
-archlinux,write operations,9858
-archlinux,other operations,31488
-archlinux,total operations,56134
-ubuntu,read operations,12342
-ubuntu,write operations,2345
-ubuntu,other operations,43555
-ubuntu,total operations,58242
+distribution,type of operations,throughput
+Ubuntu 22.04,read throughput,8.19
+Ubuntu 22.04,write throughput,5.46

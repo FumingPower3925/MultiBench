@@ -1,6 +1,2 @@
-distribution,number of threads,number of operations,execution time (s)
-archlinux,4 threads,104857600,45.1961
-ubuntu,4 threads,104457600,47.9776
-ubuntu,4 threads,104457600,47.9776
-archlinux,6 threads,104222600,45.5432
-ubuntu,6 threads,435362,40.3253
+distribution,number of threads,number of operations per second,MiB per second
+Ubuntu 22.04,4,20381753.31,19904.06

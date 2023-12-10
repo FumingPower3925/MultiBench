@@ -5,13 +5,16 @@ from subprocess import Popen, PIPE
 
 # initialize common constant variables
 menuResolution = '800x400'
+smallResolution = '400x200'
 defaultResolution = '1920x1200'
 menuString = 'Menu'
 doBenchmarkString = 'Do a benchmark'
 viewStatsString = 'View my stats'
 customizeBenchmarkString = 'Customize your benchmark'
 yourBenchmarksString = 'Your benchmarks'
+benchmarksRunningString = 'Benchmarks in progress...'
 exitString = 'Exit'
+returnString = 'Return'
 this_theme = 'plastik'
 posMenuButton = [1650,1150]
 posExitButton = [1800,1150]
@@ -22,6 +25,7 @@ benchString = ['Sysbench']
 posTestsButton = [640,400,1260,400,640,800,1260,800]
 barplotPalette = 'bright'
 runString = 'Run'
+finishString = 'All benchmarks finished correctly!'
 runningString = ['CPU test...', 'FileIO preparing...', 'FileIO test...', 'FileIO cleanup...', 'Memory test...', 'Threads Test...']
 
 def createButton(window, txt, func):
