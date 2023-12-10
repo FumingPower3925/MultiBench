@@ -11,7 +11,7 @@ Benchmark aggregator with gui and clean graphs
 - [ ] Execute sysbench from python and put the results in the required csv
 - [ ] Create a first release on github
 - [ ] Improve visuals
-- [ ] Add auto instalation of sysbench in more distributions (fedora...)
+- [ ] Add auto instalation of sysbench in more distributions (fedora, RHEL/CentOS...)
 - [ ] Second release
 - [ ] Add more and different benchmarks
 
