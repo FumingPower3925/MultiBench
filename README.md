@@ -15,8 +15,12 @@ Benchmark aggregator with gui and clean graphs
 - [ ] Add options selection to sysbench
 - [ ] Second release (v1.0)
 - [ ] Add more and different benchmarks
-
 ---
+# Usage
+`$ git clone https://github.com/FumingPower3925/MultiBench.git`
+`$ cd MultiBench/app`
+`$ python3 program.py`
+> DISCLAMER: Right now as there are no auto dependency instalation yet it is possible that you will need to install the dependecies using pip manually
 # Requisites
 
 ## python version
