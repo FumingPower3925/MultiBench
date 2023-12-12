@@ -28,21 +28,11 @@ Benchmark aggregator with gui and clean graphs
 
 # Requisites
 
-## python version
-3.11.6-1
+## Python version we've tested it on
+3.11.6
 
-## sysbench
-extra/sysbench 1.0.20-1
-
-## ttk themes
-aur/python-ttkthemes 3.2.2-1
-
-## tkinter
-aur/ttk-themes 3.2.2-1
-
-## seaborn
-extra/python-seaborn 0.12.2-3
-
+## Pip version we've tested it on
+23.3.1
 ## json5
 extra/python-json5 0.9.14-1
 
