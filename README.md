@@ -6,7 +6,7 @@ Benchmark aggregator with gui and clean graphs
 - [X] Add usage intructions to README
 - [X] Add buttons to return to the menu
 - [X] Execute sysbench from python and put the results in the required csv
-- [ ] Auto dependency instalation on startup
+- [X] Auto dependency instalation on startup
 - [ ] Add multithreded execution or another solution to show simultaniously the two memory graphs
 - [ ] Add auto instalation of sysbench (ubuntu/debian and arch)
 - [ ] Auto blank CSV generation
@@ -22,9 +22,10 @@ Benchmark aggregator with gui and clean graphs
 
 `$ cd MultiBench/app`
 
+`$ pip install -r requirements.txt`
+
 `$ python3 program.py`
-> DISCLAMER: Right now as there are no auto dependency instalation yet it is possible that you will need to install the dependecies using pip manually
-If you have archlinux you can use yay or pacman.
+
 # Requisites
 
 ## python version
