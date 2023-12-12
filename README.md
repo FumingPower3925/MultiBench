@@ -38,4 +38,4 @@ Benchmark aggregator with gui and clean graphs
 ## Pip version we've tested it on
 23.3.1
 
-## On Ubuntu you will also need python3.XX-venv, were XX is the same version as python, in our case 11
+## On Ubuntu you will also need python3.11-venv
