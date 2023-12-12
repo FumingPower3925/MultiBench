@@ -30,6 +30,45 @@ for i in filenames:
         elif i == filenames[3]:
             os.system("echo 'distribution,number of threads,totalTime,latency average (ms)' >> " + filepath+i)
 
+# check if sysbench is installed, install it otherwise
+try:
+    process = subprocess.Popen(['sysbench', '--version'],
+    stdout=subprocess.PIPE, 
+    stderr=subprocess.PIPE)
+    stdout, stderr = process.communicate()
+    while (process.poll() is None):
+        sleep(0.1)
+except:
+    print("Sysbench not installed, installing...")
+
+    # Checking the current distribution
+    if (distro.name() == "Ubuntu"):
+        # Ubutnu
+        # Adding the respository
+        process = subprocess.Popen(["wget", "-qO", "-", "https://packagecloud.io/install/repositories/akopytov/sysbench/script.deb.sh", "|", "sudo", "bash"],
+        stdout=subprocess.PIPE, 
+        stderr=subprocess.PIPE)
+        stdout, stderr = process.communicate()
+        while (process.poll() is None):
+            sleep(0.1)
+
+        # Installing sysbench Ubuntu
+        process = subprocess.Popen(["sudo", "apt", "install", "-y", "sysbench"],
+        stdout=subprocess.PIPE, 
+        stderr=subprocess.PIPE)
+        stdout, stderr = process.communicate()
+        while (process.poll() is None):
+            sleep(0.1)
+    elif (distro.name() == "Arch Linux"):
+        # Archlinux
+        # Installing sysbench from Extra
+        process = subprocess.Popen(["sudo", "pacman", "-S", "sysbench", "--noconfirm"],
+        stdout=subprocess.PIPE, 
+        stderr=subprocess.PIPE)
+        stdout, stderr = process.communicate()
+        while (process.poll() is None):
+            sleep(0.1)
+
 # create the widgets in the menu
 def showMenuWindow(window):
     if window: window.destroy()
