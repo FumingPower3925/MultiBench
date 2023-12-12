@@ -17,6 +17,19 @@ from common import *
 # get distribution name and version
 distribution = distro.name() + ' ' + distro.version()
 
+# check if the required csv files exists, else creates them with the default values
+for i in filenames:
+    if not os.path.isfile(filepath+i) or not os.path.exists(filepath+i):
+        os.system("touch " + filepath+i)
+        if i == filenames[0]:
+            os.system("echo 'distribution,execution time,events per second' >> " + filepath+i)
+        elif i == filenames[1]:
+            os.system("echo 'distribution,type of operations,throughput' >> " + filepath+i)
+        elif i == filenames[2]:
+            os.system("echo 'distribution,number of threads,number of operations per second,MiB per second' >> " + filepath+i)
+        elif i == filenames[3]:
+            os.system("echo 'distribution,number of threads,totalTime,latency average (ms)' >> " + filepath+i)
+
 # create the widgets in the menu
 def showMenuWindow(window):
     if window: window.destroy()
