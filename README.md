@@ -6,7 +6,7 @@ Benchmark aggregator with gui and clean graphs
 - [X] Add usage intructions to README
 - [X] Add buttons to return to the menu
 - [X] Execute sysbench from python and put the results in the required csv
-- [X] Auto dependency instalation on startup
+- [X] Auto dependency instalation
 - [ ] Add multithreded execution or another solution to show simultaniously the two memory graphs
 - [ ] Add auto instalation of sysbench (ubuntu/debian and arch)
 - [ ] Auto blank CSV generation
