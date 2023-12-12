@@ -8,8 +8,8 @@ Benchmark aggregator with gui and clean graphs
 - [X] Execute sysbench from python and put the results in the required csv
 - [X] Auto dependency instalation
 - [X] Auto blank CSV generation
+- [X] Add auto instalation of sysbench (ubuntu/debian and arch)
 - [ ] Add multithreded execution or another solution to show simultaniously the two memory graphs
-- [ ] Add auto instalation of sysbench (ubuntu/debian and arch)
 - [ ] Create a first release on github (v0.9)
 - [ ] Improve visuals
 - [ ] Add auto instalation of sysbench in more distributions (fedora, RHEL/CentOS...)
