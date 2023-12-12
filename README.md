@@ -22,6 +22,8 @@ Benchmark aggregator with gui and clean graphs
 
 `$ cd MultiBench/app`
 
+`$ python3 -m venv MultiBench`
+
 `$ pip install -r requirements.txt`
 
 `$ python3 program.py`
