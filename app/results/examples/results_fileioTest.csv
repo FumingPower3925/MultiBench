@@ -1,0 +1,5 @@
+distribution,type of operations,throughput
+Ubuntu 22.04,read throughput,8.19
+Ubuntu 22.04,write throughput,5.46
+Arch Linux ,read throughput,33.86
+Arch Linux ,write throughput,22.57
