@@ -12,7 +12,7 @@ Benchmark aggregator with gui and clean graphs
 - [ ] Add multithreded execution or another solution to show simultaniously the two memory graphs
 - [ ] Create a first release on github (v0.9)
 - [ ] Improve visuals
-- [ ] Add auto instalation of sysbench in more distributions (fedora, RHEL/CentOS...)
+- [ ] Add auto instalation of sysbench in more distributions (fedora, RHEL/CentOS, debian...)
 - [ ] Add options selection to sysbench
 - [ ] Second release (v1.0)
 - [ ] Add more and different benchmarks
