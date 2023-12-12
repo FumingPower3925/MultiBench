@@ -33,8 +33,3 @@ Benchmark aggregator with gui and clean graphs
 
 ## Pip version we've tested it on
 23.3.1
-## json5
-extra/python-json5 0.9.14-1
-
-## distro
-distro 1.7.0
